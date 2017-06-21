@@ -9,8 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Toast;
-import github.nisrulz.tablayout.R;
+import com.rishabh.socialgrub.R;
 
 public class FacebookFragment extends Fragment {
 
@@ -32,7 +33,7 @@ public class FacebookFragment extends Fragment {
 
 		WebSettings webSettings = mWebView.getSettings();
 		webSettings.setJavaScriptEnabled(true);
-
+		mWebView.setWebViewClient(new WebViewClient());
 		String url="https://www.facebook.com/";
 		if(url!=null) {
 			mWebView.loadUrl(url);

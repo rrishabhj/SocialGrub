@@ -9,8 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Toast;
-import github.nisrulz.tablayout.R;
+import com.rishabh.socialgrub.R;
 
 public class TwitterFragment extends Fragment {
 
@@ -30,6 +31,7 @@ public class TwitterFragment extends Fragment {
 
 		mWebView = (WebView) rootView.findViewById(R.id.wvTwitter);
 
+		mWebView.setWebViewClient(new WebViewClient());
 		WebSettings webSettings = mWebView.getSettings();
 		webSettings.setJavaScriptEnabled(true);
 

@@ -44,15 +44,17 @@ public class TabsPagerAdapter extends FragmentStatePagerAdapter {
 	@Override
 	public int getCount() {
 		// get item count - equal to number of tabs
-		return 2;
+		return 3;
 	}
 
 
 	@Override public CharSequence getPageTitle(int position) {
 		if(position==0){
-			return new String("Download");
+			return new String("Facebook");
+		}else if (position ==1){
+			return new String("Instagram");
 		}else {
-			return new String("History");
+			return new String("Twitter");
 		}
 	}
 

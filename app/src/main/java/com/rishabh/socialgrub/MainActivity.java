@@ -11,7 +11,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import com.rishabh.socialgrub.adaptor.TabsPagerAdapter;
-import github.nisrulz.tablayout.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -46,8 +45,6 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText("Twitter"));
 
         tabLayout.setupWithViewPager(viewPager);
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
 }

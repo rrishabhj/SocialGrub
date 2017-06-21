@@ -9,8 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Toast;
-import github.nisrulz.tablayout.R;
+import com.rishabh.socialgrub.R;
 
 public class InstagramFragment extends Fragment {
 
@@ -29,6 +30,7 @@ public class InstagramFragment extends Fragment {
 		View rootView = inflater.inflate(R.layout.fragment_instagram, container, false);
 
 		mWebView = (WebView) rootView.findViewById(R.id.wvInstagram);
+		mWebView.setWebViewClient(new WebViewClient());
 
 		WebSettings webSettings = mWebView.getSettings();
 		webSettings.setJavaScriptEnabled(true);
