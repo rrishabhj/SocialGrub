@@ -42,7 +42,6 @@ public class InstagramFragment extends Fragment {
 
 		mWebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
 		mWebView.getSettings().setBuiltInZoomControls(false);
-		mWebView.loadUrl("myurl...");
 		mWebView.setOnKeyListener(new View.OnKeyListener(){
 
 			public boolean onKey(View v, int keyCode, KeyEvent event) {
