@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.CookieSyncManager;
 import android.webkit.WebBackForwardList;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -42,6 +43,9 @@ public class TwitterFragment extends Fragment {
 		mWebView = (WebView) rootView.findViewById(R.id.wvFacebook);
 		swipeContainer = (SwipeRefreshLayout) rootView.findViewById(R.id.swipeContainer);
 		progressBar = rootView.findViewById(R.id.progressBar);
+
+		CookieSyncManager.createInstance(getContext());
+		CookieSyncManager.getInstance().startSync();
 
 		final WebSettings webSettings = mWebView.getSettings();
 		webSettings.setJavaScriptEnabled(true);
@@ -134,5 +138,17 @@ public class TwitterFragment extends Fragment {
 			index --;
 
 		}
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		CookieSyncManager.getInstance().stopSync();
+	}
+
+	@Override
+	public void onPause() {
+		super.onPause();
+		CookieSyncManager.getInstance().sync();
 	}
 }

@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.CookieSyncManager;
 import android.webkit.WebBackForwardList;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -46,6 +47,8 @@ public class FacebookFragment extends Fragment {
 		progressBar = rootView.findViewById(R.id.progressBar);
 
 
+		CookieSyncManager.createInstance(getContext());
+		CookieSyncManager.getInstance().startSync();
 
 		final WebSettings webSettings = mWebView.getSettings();
 		webSettings.setJavaScriptEnabled(true);
@@ -69,6 +72,7 @@ public class FacebookFragment extends Fragment {
 			}
 
 		});
+
 		mWebView.setWebViewClient(new WebViewClient() {
 			@Override
 			public void onPageStarted(WebView view, String url, Bitmap favicon)
@@ -142,4 +146,15 @@ public class FacebookFragment extends Fragment {
 		}
 	}
 
+	@Override
+	public void onResume() {
+		super.onResume();
+		CookieSyncManager.getInstance().stopSync();
+	}
+
+	@Override
+	public void onPause() {
+		super.onPause();
+		CookieSyncManager.getInstance().sync();
+	}
 }

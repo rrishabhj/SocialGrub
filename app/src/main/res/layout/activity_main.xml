@@ -42,10 +42,17 @@
         app:itemTextColor="@drawable/bottom_navigation_color_selector"
         app:menu="@menu/menu_bottom_navigation" />
 
+    <View
+        android:id="@+id/div"
+        android:layout_width="match_parent"
+        android:layout_above="@+id/bottom_navigation"
+        android:background="#000000"
+        android:layout_height="2dp" />
+
         <android.support.v4.view.ViewPager
             android:id="@+id/pager"
             android:layout_marginTop="56dp"
-            android:layout_above="@+id/bottom_navigation"
+            android:layout_above="@+id/div"
             android:layout_alignParentTop="true"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
