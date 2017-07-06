@@ -1,10 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_web_view"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
+  <ProgressBar
+      style="?android:attr/progressBarStyleHorizontal"
+      android:layout_width="match_parent"
+      android:id="@+id/progressBar"
+      android:indeterminate="true"
+      android:indeterminateTintMode="src_atop"
+      android:progressTint="@android:color/holo_red_dark"
+      android:backgroundTintMode="src_atop"
+      android:layout_height="4dp"
+      android:progressDrawable="@drawable/greenprogress"
+      />
+
+  <android.support.v4.widget.SwipeRefreshLayout
+      xmlns:android="http://schemas.android.com/apk/res/android"
+      android:id="@+id/swipeContainer"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
 
   <WebView
       android:id="@+id/wvTwitter"
@@ -14,4 +33,6 @@
 
   </WebView>
 
-</RelativeLayout>
+  </android.support.v4.widget.SwipeRefreshLayout>
+
+</LinearLayout>

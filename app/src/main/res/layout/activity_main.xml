@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
+<RelativeLayout
     android:id="@+id/rootLayout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -18,27 +18,37 @@
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
-        <android.support.design.widget.TabLayout
-            android:id="@+id/tab_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+        <!--&lt;!&ndash;<android.support.design.widget.TabLayout&ndash;&gt;-->
+            <!--&lt;!&ndash;android:id="@+id/tab_layout"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;app:tabGravity="center"&ndash;&gt;-->
+            <!--&lt;!&ndash;app:tabMode="fixed"&ndash;&gt;-->
+            <!--&lt;!&ndash;app:tabPaddingStart="10dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;app:tabPaddingEnd="10dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:visibility="gone"&ndash;&gt;-->
+            <!--&lt;!&ndash;app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>&ndash;&gt;-->
 
     </android.support.design.widget.AppBarLayout>
 
-    <LinearLayout
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="100dp"
-        android:orientation="vertical"
-        >
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:itemBackground="@color/colorPrimary"
+        app:itemIconTint="@drawable/bottom_navigation_color_selector"
+        app:itemTextColor="@drawable/bottom_navigation_color_selector"
+        app:menu="@menu/menu_bottom_navigation" />
 
         <android.support.v4.view.ViewPager
             android:id="@+id/pager"
-            android:layout_width="wrap_content"
+            android:layout_marginTop="56dp"
+            android:layout_above="@+id/bottom_navigation"
+            android:layout_alignParentTop="true"
+            android:layout_width="match_parent"
             android:layout_height="match_parent">
-
         </android.support.v4.view.ViewPager>
-    </LinearLayout>
 
-</android.support.design.widget.CoordinatorLayout>
+</RelativeLayout>

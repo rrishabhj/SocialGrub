@@ -81,4 +81,6 @@ public class TabsPagerAdapter extends FragmentStatePagerAdapter {
 		}
 	}
 
+
+
 }

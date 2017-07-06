@@ -1,10 +1,12 @@
 package com.rishabh.socialgrub.tabs;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -21,11 +23,13 @@ import com.rishabh.socialgrub.R;
 public class InstagramFragment extends Fragment {
 
 	private WebView mWebView;
+	private SwipeRefreshLayout swipeContainer;
+	private String url;
+	private View progressBar;
 
 	@Override
 	public void onCreate(@Nullable Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Log.i("Tag1","GamesFrag");
 	}
 
 	@Override
@@ -35,6 +39,8 @@ public class InstagramFragment extends Fragment {
 		View rootView = inflater.inflate(R.layout.fragment_facebook, container, false);
 
 		mWebView = (WebView) rootView.findViewById(R.id.wvFacebook);
+		swipeContainer = (SwipeRefreshLayout) rootView.findViewById(R.id.swipeContainer);
+		progressBar = rootView.findViewById(R.id.progressBar);
 
 		final WebSettings webSettings = mWebView.getSettings();
 		webSettings.setJavaScriptEnabled(true);
@@ -54,13 +60,45 @@ public class InstagramFragment extends Fragment {
 			}
 
 		});
-		mWebView.setWebViewClient(new WebViewClient());
-		String url="https://www.instagram.com/";
+		mWebView.setWebViewClient(new WebViewClient() {
+			@Override
+			public void onPageStarted(WebView view, String url, Bitmap favicon)
+			{
+				super.onPageStarted(view, url, favicon);
+				progressBar.setVisibility(View.VISIBLE);
+
+			}
+
+			@Override
+			public void onPageFinished(WebView view, String url)
+			{
+				super.onPageFinished(view, url);
+
+				progressBar.setVisibility(View.GONE);
+				swipeContainer.setRefreshing(false);
+			}
+		});
+
+		url="https://www.instagram.com/";
 		if(url!=null) {
 			mWebView.loadUrl(url);
 		}else{
 			Toast.makeText(getContext(), "URL Dead", Toast.LENGTH_SHORT).show();
 		}
+
+		// Setup refresh listener which triggers new data loading
+		swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+			@Override
+			public void onRefresh() {
+				mWebView.loadUrl(mWebView.getUrl());
+			}
+		});
+
+		// Configure the refreshing colors
+		swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
+				android.R.color.holo_green_light,
+				android.R.color.holo_orange_light,
+				android.R.color.holo_red_light);
 
 		return rootView;
 	}
@@ -93,6 +131,5 @@ public class InstagramFragment extends Fragment {
 
 		}
 	}
-
 
 }
