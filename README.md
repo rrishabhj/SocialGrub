@@ -12,6 +12,9 @@ App to see facebook, twitter, instagram in an app
 1. **Using Facebook, Twitter, Instagram with easy navigation**
 1. **New Flat Design Guidelines**
 
+## Downloads
+[SocialGrub.apk](https://www.dropbox.com/s/m8g3nrlpdmbeu81/SocialGrub.apk?dl=0)
+
 ## Screenshots
 
 ![Image](https://github.com/rrishabhj/SocialGrub/blob/master/Screenshots/device-2017-07-06-165636.png)
